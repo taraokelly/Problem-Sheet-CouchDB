@@ -5,11 +5,9 @@ __*Data Representation and Querying*__
 
 The following exercises are related to the use of the software CouchDB [2]. You can download and use CouchDB on your own devices for free.
 
-1. Run the database, and test your ability to perform a **HTTP** request on it. Do this by performing a **GET** request on it for the root resource.
+1. Run the database, and test your ability to perform a **HTTP** request on it. Do this by performing a **GET** request on it for the root resource.```curl http://127.0.0.1:5984/```
 
-```curl http://127.0.0.1:5984/```
-
-2. Create a new database called **emails**.
+2. Create a new database called **emails**.```curl -X PUT http://127.0.0.1:5984/emails```
 
 3. Create a file called email1.json containing **JSON** representing an email. (You can make up your own properties and values.) Use curl to add email1.json as a document to the
 **emails** database.
