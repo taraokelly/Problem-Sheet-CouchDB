@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+   <title>TheFeed</title>
+   <nav class="navbar navbar-full navbar-dark bg-primary">
+   		<br/>
+  		<a class="navbar-brand" href="#">
+		    <img src="/static/TheFeed1.png" width="150" height="30" alt="">
+	  	</a>
+		<div class="pull-right">
+	        <ul class="nav navbar-nav">
+	            <li>	
+		    	<form class ="form-inline">	
+					<div class="form-group">
+						<label for="name">Username:</label> 
+						<input type="text" class="form-control" id= "name">
+					</div> 	
+					<div class="form-group">
+						<label for="name">Password:</label> 
+						<input type="password" class="form-control" id= "pass">
+					</div> 
+					<button type="submit" id="submit" class="btn btn-primary"> Login </button> 
+				</form>
+			</li>
+	        </ul>     
+	</div>
+    <!-- 	</span>-->
+	</nav>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	
+	<div class="container">
+		<br/><br/>
+			<div class="alert alert-danger" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  <span class="sr-only">Error:</span>
+			 Enter a valid email address
+			</div>
+			<br/>
+			<form>
+				<div class="form-group">
+					<label for="serveroutput">Server result</label> 
+					<textarea type= 'text' class="form-control" id="serveroutput" disabled> 
+					</textarea>
+				</div>	
+			</form>
+	<br/><hr><br/>
+	<h3>Don't have an account? Sign up!</h3>
+	<br/>
+	<form>
+			<div class="form-group">
+				<label for="name">Create Username:</label> 
+				<input type="text" class="form-control" id= "newName">
+			</div> 
+			<div class="form-group">
+				<label for="name">Create Password:</label> 
+				<input type="password" class="form-control" id= "newPass">
+			</div> 
+			<div class="form-group">
+				<label for="name">Re-Enter Password:</label> 
+				<input type="password" class="form-control" id= "checkPass">
+			</div> 
+			<button type="submit" id="register" class="btn btn-success" > Sign Up </button> 
+		</form>
+</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+	
+	<script>
+	$("#submit").click(function(e) {
+		e.preventDefault();
+		data = {userinput: $("#name").val(), password: $("#pass").val()}
+		$.post("/name", data, function(resbody)
+			{
+			$("#serveroutput").text(resbody);
+		});
+	});
+	$("#register").click(function(e) {
+		e.preventDefault();
+		data = {user: $("#newName").val(), pass: $("#newPass").val(), pass1: $("#checkPass").val()}
+		$.post("/register", data, function(resbody)
+			{
+			$("#serveroutput").text(resbody);
+		});
+	});
+	</script>
+	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </body>
+</html>
